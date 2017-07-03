@@ -1,8 +1,7 @@
-var functions = require('firebase-functions');
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var functions = require("firebase-functions");
+var admin = require("firebase-admin");
+var save_token = require("./server/save-token");
+admin.initializeApp(functions.config().firebase);
+exports.saveToken = functions.https.onRequest(save_token.saveToken);
