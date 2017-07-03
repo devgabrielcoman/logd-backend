@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+			  "target": "es5",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": false,
+				"lib": [ "es7", "dom" ]
+    },
+		"include":[
+			"index.ts",
+			"server/*",
+			"utils/*",
+			"models/*"
+		],
+		"exclude": [
+        "node_modules"
+    ]
+}
