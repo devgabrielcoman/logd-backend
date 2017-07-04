@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var admin = require("firebase-admin");
 var response_1 = require("../models/response");
-function addAnswer(req, res) {
+function addResponse(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var fbId, answer, timestamp, value, response, update, result, e_1;
         return __generator(this, function (_a) {
@@ -66,4 +66,4 @@ function addAnswer(req, res) {
         });
     });
 }
-exports.addAnswer = addAnswer;
+exports.addResponse = addResponse;
