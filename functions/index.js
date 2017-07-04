@@ -7,3 +7,4 @@ var notify = require("./server/notify");
 admin.initializeApp(functions.config().firebase);
 exports.saveToken = functions.https.onRequest(save_token.saveToken);
 exports.notifyMorning = functions.https.onRequest(notify.notifyMorning);
+exports.notifyEvening = functions.https.onRequest(notify.notifyEvening);

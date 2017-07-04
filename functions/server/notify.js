@@ -37,9 +37,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var functions = require("firebase-functions");
 var network_1 = require("../utils/network");
-function notifyMorning(req, res) {
+function notifyTopic(topic, isMorning, question) {
     return __awaiter(this, void 0, void 0, function () {
-        var options, result, e_1;
+        var options;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -50,21 +50,34 @@ function notifyMorning(req, res) {
                             'Content-Type': 'application/json',
                             'Authorization': 'key=' + functions.config().firmessaging.key
                         },
-                        body: {
-                            "notification": {
-                                "body": "Test",
-                                "title": "Server Test",
-                                "data": {
-                                    "isMorning": true
-                                }
+                        body: JSON.stringify({
+                            "data": {
+                                "title": "Logd",
+                                "question": question,
+                                "isMorning": isMorning
                             },
-                            "to": "/topics/morning_questions"
-                        }
+                            "to": "/topics/" + topic
+                        })
                     };
+                    return [4, network_1.makeRequest(options)];
+                case 1: return [2, _a.sent()];
+            }
+        });
+    });
+}
+function notifyMorning(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var topic, isMorning, question, result, e_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    topic = "morning_questions";
+                    isMorning = true;
+                    question = "How is your morning?";
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4, network_1.makeRequest(options)];
+                    return [4, notifyTopic(topic, isMorning, question)];
                 case 2:
                     result = _a.sent();
                     res.status(200).json(result);
@@ -79,3 +92,30 @@ function notifyMorning(req, res) {
     });
 }
 exports.notifyMorning = notifyMorning;
+function notifyEvening(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var topic, isMorning, question, result, e_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    topic = "morning_questions";
+                    isMorning = false;
+                    question = "How has your day been?";
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4, notifyTopic(topic, isMorning, question)];
+                case 2:
+                    result = _a.sent();
+                    res.status(200).json(result);
+                    return [3, 4];
+                case 3:
+                    e_2 = _a.sent();
+                    res.status(500).send(e_2);
+                    return [3, 4];
+                case 4: return [2];
+            }
+        });
+    });
+}
+exports.notifyEvening = notifyEvening;

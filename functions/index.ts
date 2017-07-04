@@ -12,3 +12,4 @@ admin.initializeApp(functions.config().firebase);
 
 export let saveToken = functions.https.onRequest(save_token.saveToken)
 export let notifyMorning = functions.https.onRequest(notify.notifyMorning)
+export let notifyEvening = functions.https.onRequest(notify.notifyEvening)
