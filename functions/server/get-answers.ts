@@ -9,6 +9,7 @@ import * as aux from '../utils/aux'
 declare var Promise: any;
 
 export async function getAnswers(req, res) {
+	let question = req['query']['question'] as string
 	let isMorning = req['query']['isMorning'] as boolean
 	let db = isMorning ? "morning" : "evening"
 	let snapshot = await admin.database().ref('/answers/' + db).once('value')
@@ -23,6 +24,7 @@ export async function getAnswers(req, res) {
 
 	let answers = aux.shuffle(result).splice(0, 3)
 	res.status(200).json({
-		'data': answers
+		'question': question,
+		'answers': answers
 	})
 }

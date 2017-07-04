@@ -39,10 +39,11 @@ var admin = require("firebase-admin");
 var aux = require("../utils/aux");
 function getAnswers(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var isMorning, db, snapshot, result, answers;
+        var question, isMorning, db, snapshot, result, answers;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    question = req['query']['question'];
                     isMorning = req['query']['isMorning'];
                     db = isMorning ? "morning" : "evening";
                     return [4, admin.database().ref('/answers/' + db).once('value')];
@@ -57,7 +58,8 @@ function getAnswers(req, res) {
                     });
                     answers = aux.shuffle(result).splice(0, 3);
                     res.status(200).json({
-                        'data': answers
+                        'question': question,
+                        'answers': answers
                     });
                     return [2];
             }
