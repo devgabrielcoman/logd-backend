@@ -13,9 +13,9 @@ var Response = (function () {
     };
     Response.prototype.export = function () {
         var update = {};
-        update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/timestamp'] = this.timestamp;
+        update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/timestamp'] = Number(this.timestamp);
         update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/answer'] = this.answer;
-        update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/value'] = this.value;
+        update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/value'] = Number(this.value);
         return update;
     };
     return Response;

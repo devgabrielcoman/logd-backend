@@ -25,9 +25,9 @@ export class Response implements DatabaseExport, NeedsValidation {
 
 	export(): object {
 		var update = {}
-		update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/timestamp'] = this.timestamp
+		update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/timestamp'] = Number(this.timestamp)
 		update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/answer'] = this.answer
-		update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/value'] = this.value
+		update['/responses/' + aux.transform(this.id) + '/' + this.timestamp + '/value'] = Number(this.value)
 		return update
 	}
 }
