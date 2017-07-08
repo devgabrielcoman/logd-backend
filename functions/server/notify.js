@@ -98,7 +98,7 @@ function notifyEvening(req, res) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    topic = "morning_questions";
+                    topic = "evening_questions";
                     isMorning = false;
                     question = "How has your day been?";
                     _a.label = 1;

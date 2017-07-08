@@ -44,7 +44,7 @@ export async function notifyMorning(req, res) {
 }
 
 export async function notifyEvening(req, res) {
-	let topic = "morning_questions"
+	let topic = "evening_questions"
 	let isMorning = false
 	let question  = "How has your day been?"
 

@@ -11,7 +11,7 @@ declare var Promise: any;
 export async function getAnswers(req, res) {
 	let question = req['query']['question'] as string
 	let isMorning = req['query']['isMorning']
-	let db = isMorning == true ? "morning" : "evening"
+	let db = isMorning === "true" ? "morning" : "evening"
 	let snapshot = await admin.database().ref('/answers/' + db).once('value')
 
 	var result = new Array<string>()

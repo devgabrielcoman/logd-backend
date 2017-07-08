@@ -45,7 +45,7 @@ function getAnswers(req, res) {
                 case 0:
                     question = req['query']['question'];
                     isMorning = req['query']['isMorning'];
-                    db = isMorning == true ? "morning" : "evening";
+                    db = isMorning === "true" ? "morning" : "evening";
                     return [4, admin.database().ref('/answers/' + db).once('value')];
                 case 1:
                     snapshot = _a.sent();
